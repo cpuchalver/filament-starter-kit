@@ -19,15 +19,15 @@ It ships with Pest, Laravel Boost and Spatie's coding guidelines for AI-assisted
 Create a new project with the Laravel installer:
 
 ```bash
-laravel new my-project --using=https://github.com/cpuchalver/filament-starter-kit
+laravel new my-project --using=cpuchalver/filament-starter-kit
 ```
 
-The installer downloads the starter kit without its Git history, installs the dependencies, generates the application key, creates and migrates the database, and builds the frontend assets.
+The installer downloads the starter kit from Packagist without its Git history, installs the dependencies, generates the application key, creates and migrates the database, and builds the frontend assets.
 
 To skip the prompts and create a private GitHub repository for the new project:
 
 ```bash
-laravel new my-project --using=https://github.com/cpuchalver/filament-starter-kit \
+laravel new my-project --using=cpuchalver/filament-starter-kit \
     --database=sqlite --npm --github="--private"
 ```
 
@@ -43,6 +43,17 @@ php artisan db:seed
 ```
 
 You can then log in with `test@example.com` / `password`. Change these credentials before deploying.
+
+### Alternative: Composer
+
+Without the Laravel installer, create the project with Composer, then build the frontend assets:
+
+```bash
+composer create-project cpuchalver/filament-starter-kit my-project
+cd my-project
+npm install && npm run build
+php artisan db:seed
+```
 
 ### Alternative: GitHub template
 
