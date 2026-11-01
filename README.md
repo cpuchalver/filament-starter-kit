@@ -22,17 +22,6 @@ Create a new project with the Laravel installer:
 laravel new my-project --using=cpuchalver/filament-starter-kit
 ```
 
-The installer downloads the starter kit from Packagist without its Git history, installs the dependencies, generates the application key, creates and migrates the database, and builds the frontend assets.
-
-To skip the prompts and create a private GitHub repository for the new project:
-
-```bash
-laravel new my-project --using=cpuchalver/filament-starter-kit \
-    --database=sqlite --npm --github="--private"
-```
-
-Creating the GitHub repository requires the [`gh` CLI](https://cli.github.com), authenticated with `gh auth login`.
-
 ### Create the admin user
 
 The installer does not seed the database. Create the default admin user with:
