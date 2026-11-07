@@ -159,6 +159,24 @@ it('prevents admins from removing their own admin rights', function () {
         ->assertFormFieldDisabled('is_admin');
 });
 
+it('grants and revokes admin rights on another user', function () {
+    $user = User::factory()->create();
+
+    livewire(EditUser::class, ['record' => $user->id])
+        ->fillForm(['is_admin' => true])
+        ->call('save')
+        ->assertHasNoFormErrors();
+
+    expect($user->refresh()->is_admin)->toBeTrue();
+
+    livewire(EditUser::class, ['record' => $user->id])
+        ->fillForm(['is_admin' => false])
+        ->call('save')
+        ->assertHasNoFormErrors();
+
+    expect($user->refresh()->is_admin)->toBeFalse();
+});
+
 it('deletes another user', function () {
     $user = User::factory()->create();
 

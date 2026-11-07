@@ -25,6 +25,10 @@ class EditUser extends EditRecord
     {
         $record->fill($data);
 
+        if (array_key_exists('is_admin', $data)) {
+            $record->is_admin = $data['is_admin'];
+        }
+
         if ($record->isDirty('email')) {
             $record->email_verified_at = null;
         }
