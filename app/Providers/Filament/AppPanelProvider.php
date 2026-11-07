@@ -28,7 +28,12 @@ class AppPanelProvider extends PanelProvider
             ->login()
             ->emailVerification()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
+                'secondary' => Color::Gray,
+                'success' => Color::Green,
+                'danger' => Color::Red,
+                'warning' => Color::Yellow,
+                'info' => Color::Sky,
             ])
             ->discoverResources(in: app_path('Filament/App/Resources'), for: 'App\Filament\App\Resources')
             ->discoverPages(in: app_path('Filament/App/Pages'), for: 'App\Filament\App\Pages')
