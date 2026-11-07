@@ -7,6 +7,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Auth;
 
 class UserForm
 {
@@ -36,7 +37,7 @@ class UserForm
                     ->dehydrated(false),
                 Toggle::make('is_admin')
                     ->label('Administrator')
-                    ->disabled(fn (?User $record): bool => $record?->is(auth()->user()) ?? false),
+                    ->disabled(fn (?User $record): bool => $record?->is(Auth::user()) ?? false),
             ]);
     }
 }

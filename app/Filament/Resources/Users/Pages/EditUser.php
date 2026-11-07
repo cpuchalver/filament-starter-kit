@@ -7,6 +7,7 @@ use App\Models\User;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class EditUser extends EditRecord
 {
@@ -16,7 +17,7 @@ class EditUser extends EditRecord
     {
         return [
             DeleteAction::make()
-                ->hidden(fn (User $record): bool => $record->is(auth()->user())),
+                ->hidden(fn (User $record): bool => $record->is(Auth::user())),
         ];
     }
 
@@ -24,6 +25,10 @@ class EditUser extends EditRecord
     protected function handleRecordUpdate(Model $record, array $data): Model
     {
         $record->fill($data);
+
+        if (array_key_exists('is_admin', $data)) {
+            $record->is_admin = $data['is_admin'];
+        }
 
         if ($record->isDirty('email')) {
             $record->email_verified_at = null;
